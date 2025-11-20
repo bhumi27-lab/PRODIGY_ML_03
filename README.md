@@ -1,3 +1,5 @@
+
+
 🐾 Cat vs Dog Image Classification using SVM
 
 A machine learning project that classifies images of cats and dogs using a Support Vector Machine (SVM) model with complete preprocessing, training, evaluation, and saved-model prediction workflow.
@@ -12,7 +14,7 @@ Image loading
 
 Resizing & grayscale conversion
 
-Flattening image pixels
+Flattening
 
 Feature scaling
 
@@ -60,50 +62,51 @@ tqdm
 🧠 Workflow
 1️⃣ Image Preprocessing
 
-Resize to 64×64
+Resize images to 64×64
 
 Convert to grayscale
 
-Flatten → 4096 features
-
-Store data + labels
+Flatten to 4096-pixel vectors
 
 2️⃣ Train/Test Split
 
-80% training, 20% testing
+80% training
 
-Stratified for balanced classes
+20% testing
+
+Stratified sampling
 
 3️⃣ Feature Scaling
 
-Standardized using StandardScaler() — essential for SVM performance.
+SVM requires normalized inputs → used StandardScaler().
 
 4️⃣ Model Training
 
-Used RBF kernel:
+SVM with RBF kernel:
 
 SVC(kernel='rbf', C=3, gamma='scale')
 
 5️⃣ Model Evaluation
 
-Printed:
+Includes:
 
 Accuracy
 
-Classification report
+Precision
 
-Precision, Recall, F1-score
+Recall
+
+F1-score
+
+Classification report
 
 6️⃣ Visualization
 
-Displayed a random test image with predicted label.
+Random test image is shown along with predicted label.
 
 💾 Saving the Model
 joblib.dump(model, "svm_cat_dog_model.joblib")
 joblib.dump(scaler, "scaler_cat_dog.joblib")
-
-
-Both model and scaler are saved for future predictions.
 
 🔁 Loading the Model
 loaded_model = joblib.load("svm_cat_dog_model.joblib")
@@ -111,19 +114,17 @@ loaded_scaler = joblib.load("scaler_cat_dog.joblib")
 
 🖼 Predicting on New Images
 
-Users can upload any image, which is then:
+Upload image
 
-Resized
+Preprocess
 
-Grayscaled
+Flatten
 
-Flattened
+Scale
 
-Scaled
+Predict (Cat/Dog)
 
-Classified as Cat or Dog
-
-A Matplotlib preview shows the uploaded image with the predicted label.
+Display result via Matplotlib
 
 📁 Repository Structure
 Task3/
@@ -131,30 +132,32 @@ Task3/
 ├── notebook.ipynb
 ├── svm_cat_dog_model.joblib
 ├── scaler_cat_dog.joblib
+├── .gitignore
+├── LICENSE
 └── README.md
 
 📌 Learning Outcomes
 
+Image preprocessing
+
 Applying SVM to high-dimensional data
 
-Image preprocessing using OpenCV
+Scaling and normalization
 
-Feature scaling and preparation
+Model evaluation
 
-Training and evaluating ML models
+Saving & loading ML models
 
-Saving and loading models
+Prediction on new data
 
-Making predictions on new data
-
-Building a clear ML project workflow
+End-to-end ML workflow
 
 🚀 Future Improvements
 
-Add HOG features for better performance
+Add HOG features
 
-Train a CNN to achieve higher accuracy
+Replace SVM with CNN
 
-Deploy model using Streamlit
+Deploy using Streamlit
 
 Add data augmentation
