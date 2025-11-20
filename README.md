@@ -1,132 +1,113 @@
-🐾 Cat vs Dog Image Classification using SVM
+# Cat vs Dog Image Classification using SVM
 
 A machine learning project that classifies images of cats and dogs using a Support Vector Machine (SVM) model with complete preprocessing, training, evaluation, and saved-model prediction workflow.
 
-📌 Project Overview
+---
+
+## Project Overview
 
 This project demonstrates how classical machine learning algorithms like SVM can be applied to image classification by preprocessing images and converting them into numerical feature vectors.
 
 The pipeline includes:
+- Image loading
+- Resizing and grayscale conversion
+- Flattening image pixels
+- Feature scaling
+- SVM model training
+- Model evaluation
+- Saving the trained model
+- Predicting new uploaded images
 
-Image loading
+---
 
-Resizing and grayscale conversion
-
-Flattening image pixels
-
-Feature scaling
-
-SVM model training
-
-Model evaluation
-
-Saving the trained model
-
-Predicting uploaded images
-
-📂 Dataset
+## Dataset
 
 Source: Kaggle — Cat and Dog Dataset by tongpython
 
 Folder structure after extraction:
 
 cat_and_dog/
-    └── training_set/
-          └── training_set/
-                ├── cats/
-                └── dogs/
+ └── training_set/
+      └── training_set/
+           ├── cats/
+           └── dogs/
 
+---
 
-Only the labeled training set was used.
+## Technologies Used
 
-🔧 Technologies Used
+- Python
+- Google Colab
+- NumPy
+- OpenCV
+- Scikit-learn
+- Matplotlib
+- joblib
+- tqdm
 
-Python
+---
 
-Google Colab
+## Workflow
 
-NumPy
+### 1. Image Preprocessing
+- Resized images to 64×64
+- Converted to grayscale
+- Flattened to 4096 features
 
-OpenCV
+### 2. Train/Test Split
+- 80% training
+- 20% testing
+- Stratified sampling
 
-Scikit-learn
+### 3. Feature Scaling
+Used StandardScaler() to normalize pixel values.
 
-Matplotlib
-
-joblib
-
-tqdm
-
-🧠 Workflow
-1️⃣ Image Preprocessing
-
-Resize images to 64×64
-
-Convert to grayscale
-
-Flatten to a 4096-pixel vector
-
-2️⃣ Train/Test Split
-
-80% for training
-
-20% for testing
-
-Stratified split
-
-3️⃣ Feature Scaling
-
-Standardized using:
-
-StandardScaler()
-
-4️⃣ Model Training
-
-Used an RBF-kernel SVM:
+### 4. Model Training
+SVM with RBF kernel:
 
 SVC(kernel='rbf', C=3, gamma='scale')
 
-5️⃣ Evaluation
+### 5. Model Evaluation
+Computed:
+- Accuracy
+- Precision
+- Recall
+- F1-score
+- Classification report
 
-Accuracy
+### 6. Visualization
+Displayed a random test image with its predicted label.
 
-Precision
+---
 
-Recall
+## Saving the Model
 
-F1-score
-
-Classification report
-
-6️⃣ Visualization
-
-Random test image displayed with predicted label.
-
-💾 Saving the Model
 joblib.dump(model, "svm_cat_dog_model.joblib")
 joblib.dump(scaler, "scaler_cat_dog.joblib")
 
-🔁 Loading the Model
+---
+
+## Loading the Model
+
 loaded_model = joblib.load("svm_cat_dog_model.joblib")
 loaded_scaler = joblib.load("scaler_cat_dog.joblib")
 
-🖼 Predicting New Images
+---
 
-Uploaded images are:
+## Prediction on New Images
 
-Resized
+Steps:
+- Upload image
+- Preprocess
+- Scale
+- Predict (Cat/Dog)
+- Visualize using Matplotlib
 
-Converted to grayscale
+---
 
-Flattened
+## Repository Structure
 
-Scaled
-
-Classified as Cat or Dog
-
-📁 Repository Structure
 Task3/
-│
 ├── notebook.ipynb
 ├── svm_cat_dog_model.joblib
 ├── scaler_cat_dog.joblib
@@ -134,12 +115,11 @@ Task3/
 ├── LICENSE
 └── README.md
 
-🚀 Future Improvements
+---
 
-Add HOG features
+## Future Improvements
 
-Replace SVM with a CNN
-
-Deploy using Streamlit
-
-Add data augmentation
+- Use HOG features
+- Train a CNN for better accuracy
+- Deploy using Streamlit
+- Add data augmentation
