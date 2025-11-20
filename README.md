@@ -1,5 +1,3 @@
-
-
 🐾 Cat vs Dog Image Classification using SVM
 
 A machine learning project that classifies images of cats and dogs using a Support Vector Machine (SVM) model with complete preprocessing, training, evaluation, and saved-model prediction workflow.
@@ -39,7 +37,7 @@ cat_and_dog/
                 └── dogs/
 
 
-Only the labeled training set was used for training and testing.
+Only the labeled training set was used.
 
 🔧 Technologies Used
 
@@ -62,47 +60,37 @@ tqdm
 🧠 Workflow
 1️⃣ Image Preprocessing
 
-Resize images to 64×64
+Resize to 64×64
 
 Convert to grayscale
 
-Flatten to 4096-pixel vectors
+Flatten to 4096 pixels
 
 2️⃣ Train/Test Split
 
-80% training
+80% train
 
-20% testing
+20% test
 
 Stratified sampling
 
-3️⃣ Feature Scaling
+3️⃣ Scaling
 
-SVM requires normalized inputs → used StandardScaler().
+StandardScaler used for normalization.
 
 4️⃣ Model Training
 
-SVM with RBF kernel:
+Using SVM with RBF kernel:
 
 SVC(kernel='rbf', C=3, gamma='scale')
 
-5️⃣ Model Evaluation
+5️⃣ Evaluation
 
-Includes:
-
-Accuracy
-
-Precision
-
-Recall
-
-F1-score
-
-Classification report
+Includes accuracy + full classification report.
 
 6️⃣ Visualization
 
-Random test image is shown along with predicted label.
+Random image from test set displayed with predicted label.
 
 💾 Saving the Model
 joblib.dump(model, "svm_cat_dog_model.joblib")
@@ -112,19 +100,19 @@ joblib.dump(scaler, "scaler_cat_dog.joblib")
 loaded_model = joblib.load("svm_cat_dog_model.joblib")
 loaded_scaler = joblib.load("scaler_cat_dog.joblib")
 
-🖼 Predicting on New Images
+🖼 Predicting New Images
 
-Upload image
+Uploaded images are:
 
-Preprocess
+Resized
 
-Flatten
+Grayscaled
 
-Scale
+Flattened
 
-Predict (Cat/Dog)
+Scaled
 
-Display result via Matplotlib
+Classified
 
 📁 Repository Structure
 Task3/
@@ -136,28 +124,12 @@ Task3/
 ├── LICENSE
 └── README.md
 
-📌 Learning Outcomes
-
-Image preprocessing
-
-Applying SVM to high-dimensional data
-
-Scaling and normalization
-
-Model evaluation
-
-Saving & loading ML models
-
-Prediction on new data
-
-End-to-end ML workflow
-
 🚀 Future Improvements
 
-Add HOG features
+Use HOG features
 
 Replace SVM with CNN
 
-Deploy using Streamlit
+Deploy with Streamlit
 
-Add data augmentation
+Add augmentation
