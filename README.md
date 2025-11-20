@@ -10,9 +10,9 @@ The pipeline includes:
 
 Image loading
 
-Resizing & grayscale conversion
+Resizing and grayscale conversion
 
-Flattening
+Flattening image pixels
 
 Feature scaling
 
@@ -22,7 +22,7 @@ Model evaluation
 
 Saving the trained model
 
-Predicting new uploaded images
+Predicting uploaded images
 
 📂 Dataset
 
@@ -60,37 +60,47 @@ tqdm
 🧠 Workflow
 1️⃣ Image Preprocessing
 
-Resize to 64×64
+Resize images to 64×64
 
 Convert to grayscale
 
-Flatten to 4096 pixels
+Flatten to a 4096-pixel vector
 
 2️⃣ Train/Test Split
 
-80% train
+80% for training
 
-20% test
+20% for testing
 
-Stratified sampling
+Stratified split
 
-3️⃣ Scaling
+3️⃣ Feature Scaling
 
-StandardScaler used for normalization.
+Standardized using:
+
+StandardScaler()
 
 4️⃣ Model Training
 
-Using SVM with RBF kernel:
+Used an RBF-kernel SVM:
 
 SVC(kernel='rbf', C=3, gamma='scale')
 
 5️⃣ Evaluation
 
-Includes accuracy + full classification report.
+Accuracy
+
+Precision
+
+Recall
+
+F1-score
+
+Classification report
 
 6️⃣ Visualization
 
-Random image from test set displayed with predicted label.
+Random test image displayed with predicted label.
 
 💾 Saving the Model
 joblib.dump(model, "svm_cat_dog_model.joblib")
@@ -106,13 +116,13 @@ Uploaded images are:
 
 Resized
 
-Grayscaled
+Converted to grayscale
 
 Flattened
 
 Scaled
 
-Classified
+Classified as Cat or Dog
 
 📁 Repository Structure
 Task3/
@@ -126,10 +136,10 @@ Task3/
 
 🚀 Future Improvements
 
-Use HOG features
+Add HOG features
 
-Replace SVM with CNN
+Replace SVM with a CNN
 
-Deploy with Streamlit
+Deploy using Streamlit
 
-Add augmentation
+Add data augmentation
